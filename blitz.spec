@@ -3,17 +3,17 @@ Summary(pl):	Blitz++ - biblioteka klas C++ do obliczeñ naukowych
 Name:		blitz
 Version:	0.8
 Release:	0.1
-License:	GPL or the Blitz artistic license at your choice.
+License:	GPL or Blitz artistic license
 Group:		Libraries
-Source0:	http://mesh.dl.sourceforge.net/sourceforge/blitz/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/blitz/%{name}-%{version}.tar.gz
 # Source0-md5:	358cdd8716de5d615f91df660f1c92d9
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://www.oonumerics.org/blitz/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
-BuildRequires:	libtool >= 2:1.5
 BuildRequires:	doxygen
 BuildRequires:	libstdc++-devel
+BuildRequires:	libtool >= 2:1.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -23,9 +23,10 @@ achieve high performance. The current versions provide dense arrays
 and vectors, random number generators, and small vectors and matrices.
 
 %description -l pl
-Blitz++ jest bibliotek± klas C++ do obliczeñ naukowych. Dostarcza
-gêstych(?) tablic i wektorów, generatorów liczb losowych oraz ma³ych
-wektorów i macierzy.
+Blitz++ jest bibliotek± klas C++ do obliczeñ naukowych o wydajno¶ci
+dorównuj±cej Fortranowi 77/90. Do osi±gniêcia du¿ej wydajno¶ci u¿ywa
+rozwi±zañ opartych na szablonach. Dostarcza gêstych tablic i wektorów,
+generatorów liczb losowych oraz ma³ych wektorów i macierzy.
 
 %package devel
 Summary:	Header files for Blitz++ library
@@ -83,18 +84,19 @@ Przyk³ady Blitz++.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure --enable-shared
+%configure \
+	--enable-shared
 %{__make} lib
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d -- $RPM_BUILD_ROOT{%{_docdir}/%{name}-doc-%{version}/doxygen,%{_examplesdir}/%{name}}
+install -d $RPM_BUILD_ROOT{%{_docdir}/%{name}-doc-%{version}/doxygen,%{_examplesdir}/%{name}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-cp -af -- $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/{*.*,doxygen} $RPM_BUILD_ROOT%{_docdir}/%{name}-doc-%{version}
-cp -af -- examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}
+cp -af $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/{*.*,doxygen} $RPM_BUILD_ROOT%{_docdir}/%{name}-doc-%{version}
+cp -af examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -128,7 +130,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files doc
 %defattr(644,root,root,755)
-%doc %{_docdir}/%{name}-doc-%{version}
+%{_docdir}/%{name}-doc-%{version}
 
 %files examples
 %defattr(644,root,root,755)
