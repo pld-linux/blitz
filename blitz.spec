@@ -8,6 +8,7 @@ Group:		Libraries
 Source0:	http://dl.sourceforge.net/blitz/%{name}-%{version}.tar.gz
 # Source0-md5:	358cdd8716de5d615f91df660f1c92d9
 Patch0:		%{name}-DESTDIR.patch
+Patch1:		%{name}-compiler_specific_header.patch
 URL:		http://www.oonumerics.org/blitz/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -77,6 +78,7 @@ Przyk³ady Blitz++.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -106,6 +108,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %post devel
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir %{_infodir} >/dev/null 2>&1
+%{__sed} -i -e 's/(blitz++)\./(blitz)./' %{_infodir}/dir
 
 %postun devel
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir %{_infodir} >/dev/null 2>&1
