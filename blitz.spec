@@ -9,6 +9,7 @@ Source0:	http://dl.sourceforge.net/blitz/%{name}-%{version}.tar.gz
 # Source0-md5:	358cdd8716de5d615f91df660f1c92d9
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-compiler_specific_header.patch
+Patch2:		%{name}-infopage.patch
 URL:		http://www.oonumerics.org/blitz/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -79,6 +80,7 @@ Przyk³ady Blitz++.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__libtoolize}

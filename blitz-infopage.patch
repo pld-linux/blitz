@@ -1,0 +1,15 @@
+diff -Nur blitz-0.8/doc/blitz.info blitz-0.8.new/doc/blitz.info
+--- blitz-0.8/doc/blitz.info	2004-11-04 23:47:23.000000000 +0100
++++ blitz-0.8.new/doc/blitz.info	2005-05-30 19:20:48.000000000 +0200
+@@ -1,8 +1,8 @@
+ This is blitz.info, produced by makeinfo version 4.1 from blitz.texi.
+ 
+-INFO-DIR-SECTION Blitz++ library
++INFO-DIR-SECTION Libraries
+ START-INFO-DIR-ENTRY
+-* Blitz++: (blitz++).           High-performance C++ numeric library
++* Blitz++: (blitz++).			High-performance C++ numeric library
+ END-INFO-DIR-ENTRY
+ 
+ 
+ 
