@@ -57,7 +57,7 @@ Statyczna biblioteka Blitz++.
 %package doc
 Summary:	Documentation for Blitz++ library
 Summary(pl):	Dokumentacja Blitz++
-Group:		Documentation	
+Group:		Documentation
 
 %description doc
 Documentation for Blitz++ library.
@@ -68,7 +68,7 @@ Dokumentacja bibliotekiBlitz++.
 %package examples
 Summary:	Examples for Blitz++ library
 Summary(pl):	Przyk³ady Blitz++
-Group:		Documentation	
+Group:		Documentation
 
 %description examples
 Examples for Blitz++ library.
