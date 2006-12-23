@@ -63,7 +63,7 @@ Group:		Documentation
 Documentation for Blitz++ library.
 
 %description static -l pl
-Dokumentacja bibliotekiBlitz++.
+Dokumentacja biblioteki Blitz++.
 
 %package examples
 Summary:	Examples for Blitz++ library
