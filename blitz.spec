@@ -1,5 +1,5 @@
 Summary:	Blitz++ - a C++ class library for scientific computing
-Summary(pl.UTF-8):   Blitz++ - biblioteka klas C++ do obliczeń naukowych
+Summary(pl.UTF-8):	Blitz++ - biblioteka klas C++ do obliczeń naukowych
 Name:		blitz
 Version:	0.8
 Release:	0.1
@@ -32,7 +32,7 @@ generatorów liczb losowych oraz małych wektorów i macierzy.
 
 %package devel
 Summary:	Header files for Blitz++ library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki Blitz++
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Blitz++
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -44,7 +44,7 @@ Pliki nagłówkowe biblioteki Blitz++.
 
 %package static
 Summary:	Static Blitz++ library
-Summary(pl.UTF-8):   Statyczna biblioteka Blitz++
+Summary(pl.UTF-8):	Statyczna biblioteka Blitz++
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -56,7 +56,7 @@ Statyczna biblioteka Blitz++.
 
 %package doc
 Summary:	Documentation for Blitz++ library
-Summary(pl.UTF-8):   Dokumentacja Blitz++
+Summary(pl.UTF-8):	Dokumentacja Blitz++
 Group:		Documentation
 
 %description doc
@@ -67,7 +67,7 @@ Dokumentacja biblioteki Blitz++.
 
 %package examples
 Summary:	Examples for Blitz++ library
-Summary(pl.UTF-8):   Przykłady Blitz++
+Summary(pl.UTF-8):	Przykłady Blitz++
 Group:		Documentation
 
 %description examples
