@@ -1,5 +1,5 @@
 Summary:	Blitz++ - a C++ class library for scientific computing
-Summary(pl):	Blitz++ - biblioteka klas C++ do obliczeÒ naukowych
+Summary(pl.UTF-8):   Blitz++ - biblioteka klas C++ do oblicze≈Ñ naukowych
 Name:		blitz
 Version:	0.8
 Release:	0.1
@@ -24,57 +24,57 @@ performance on par with Fortran 77/90. It uses template techniques to
 achieve high performance. The current versions provide dense arrays
 and vectors, random number generators, and small vectors and matrices.
 
-%description -l pl
-Blitz++ jest bibliotek± klas C++ do obliczeÒ naukowych o wydajno∂ci
-dorÛwnuj±cej Fortranowi 77/90. Do osi±gniÍcia duøej wydajno∂ci uøywa
-rozwi±zaÒ opartych na szablonach. Dostarcza gÍstych tablic i wektorÛw,
-generatorÛw liczb losowych oraz ma≥ych wektorÛw i macierzy.
+%description -l pl.UTF-8
+Blitz++ jest bibliotekƒÖ klas C++ do oblicze≈Ñ naukowych o wydajno≈õci
+dor√≥wnujƒÖcej Fortranowi 77/90. Do osiƒÖgniƒôcia du≈ºej wydajno≈õci u≈ºywa
+rozwiƒÖza≈Ñ opartych na szablonach. Dostarcza gƒôstych tablic i wektor√≥w,
+generator√≥w liczb losowych oraz ma≈Çych wektor√≥w i macierzy.
 
 %package devel
 Summary:	Header files for Blitz++ library
-Summary(pl):	Pliki nag≥Ûwkowe biblioteki Blitz++
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe biblioteki Blitz++
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for Blitz++ library.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe biblioteki Blitz++.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe biblioteki Blitz++.
 
 %package static
 Summary:	Static Blitz++ library
-Summary(pl):	Statyczna biblioteka Blitz++
+Summary(pl.UTF-8):   Statyczna biblioteka Blitz++
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static Blitz++ library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka Blitz++.
 
 %package doc
 Summary:	Documentation for Blitz++ library
-Summary(pl):	Dokumentacja Blitz++
+Summary(pl.UTF-8):   Dokumentacja Blitz++
 Group:		Documentation
 
 %description doc
 Documentation for Blitz++ library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Dokumentacja biblioteki Blitz++.
 
 %package examples
 Summary:	Examples for Blitz++ library
-Summary(pl):	Przyk≥ady Blitz++
+Summary(pl.UTF-8):   Przyk≈Çady Blitz++
 Group:		Documentation
 
 %description examples
 Examples for Blitz++ library.
 
-%description examples -l pl
-Przyk≥ady Blitz++.
+%description examples -l pl.UTF-8
+Przyk≈Çady Blitz++.
 
 %prep
 %setup -q
