@@ -1,12 +1,23 @@
-diff -Nurb blitz-0.8.orig/doc/doxygen/Makefile.am blitz-0.8.new/doc/doxygen/Makefile.am
---- blitz-0.8.orig/doc/doxygen/Makefile.am	2004-11-04 03:22:01.000000000 +0100
-+++ blitz-0.8.new/doc/doxygen/Makefile.am	2005-05-18 23:14:19.435429344 +0200
+diff -Nurb blitz-0.9.orig/doc/doxygen/Makefile.am blitz-0.9.new/doc/doxygen/Makefile.am
+--- blitz-0.9.orig/doc/doxygen/Makefile.am	2004-11-04 03:22:01.000000000 +0100
++++ blitz-0.9.new/doc/doxygen/Makefile.am	2005-05-18 23:14:19.435429344 +0200
 @@ -2,7 +2,7 @@
  
  # Support doxygen documentation ?
  
 -docdir = $(datadir)/doc/$(PACKAGE)-$(VERSION)/doxygen
-+docdir = $(DESTDIR)/$(datadir)/doc/$(PACKAGE)-$(VERSION)/doxygen
++docdir = $(datadir)/doc/$(PACKAGE)-doc-$(VERSION)/doxygen
  
  DISTCLEANFILES = Doxyfile doxygen-warning 
  
+--- blitz-0.9/doc/Makefile.am.orig	2007-11-01 21:28:14.000000000 +0100
++++ blitz-0.9/doc/Makefile.am	2007-11-01 21:28:50.000000000 +0100
+@@ -5,7 +5,7 @@
+ SUBDIRS = examples stencils doxygen
+ 
+ # install these files
+-docdir = $(datadir)/doc/$(PACKAGE)-$(VERSION)
++docdir = $(datadir)/doc/$(PACKAGE)-doc-$(VERSION)
+ doc_DATA = blitz.ps blitz.pdf blitz.html \
+ 	blitz_abt.html blitz_fot.html blitz_ovr.html blitz_toc.html \
+ 	blitz_1.html blitz_2.html blitz_3.html blitz_4.html blitz_5.html \

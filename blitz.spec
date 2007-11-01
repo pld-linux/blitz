@@ -1,12 +1,12 @@
 Summary:	Blitz++ - a C++ class library for scientific computing
 Summary(pl.UTF-8):	Blitz++ - biblioteka klas C++ do obliczeń naukowych
 Name:		blitz
-Version:	0.8
+Version:	0.9
 Release:	0.1
 License:	GPL or Blitz artistic license
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/blitz/%{name}-%{version}.tar.gz
-# Source0-md5:	358cdd8716de5d615f91df660f1c92d9
+# Source0-md5:	031df2816c73e2d3bd6d667bbac19eca
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-compiler_specific_header.patch
 Patch2:		%{name}-infopage.patch
@@ -14,6 +14,7 @@ URL:		http://www.oonumerics.org/blitz/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	doxygen
+BuildRequires:	fonts-TTF-bitstream-vera
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -79,7 +80,7 @@ Przykłady Blitz++.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
+#%patch1 -p1
 %patch2 -p1
 
 %build
@@ -99,7 +100,6 @@ install -d $RPM_BUILD_ROOT{%{_docdir}/%{name}-doc-%{version}/doxygen,%{_examples
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-cp -af $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/{*.*,doxygen} $RPM_BUILD_ROOT%{_docdir}/%{name}-doc-%{version}
 cp -af examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}
 
 %clean
@@ -119,6 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog ChangeLog.1 LEGAL LICENSE NEWS README TODO
 %attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%{_pkgconfigdir}/blitz-uninstalled.pc
 
 %files devel
 %defattr(644,root,root,755)
