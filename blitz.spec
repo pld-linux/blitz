@@ -112,8 +112,8 @@ rm -rf $RPM_BUILD_ROOT
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir %{_infodir} >/dev/null 2>&1
 %{__sed} -i -e 's/(blitz++)\./(blitz)./' %{_infodir}/dir
 
-%postun devel
-[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir %{_infodir} >/dev/null 2>&1
+%postun devel	-p	/sbin/postshell
+-/usr/sbin/fix-info-dir -c %{_infodir}
 
 %files
 %defattr(644,root,root,755)
