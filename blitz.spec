@@ -63,7 +63,7 @@ Group:		Documentation
 %description doc
 Documentation for Blitz++ library.
 
-%description static -l pl.UTF-8
+%description doc -l pl.UTF-8
 Dokumentacja biblioteki Blitz++.
 
 %package examples
