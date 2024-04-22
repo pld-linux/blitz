@@ -1,15 +1,14 @@
-diff -Nur blitz-0.8/doc/blitz.info blitz-0.8.new/doc/blitz.info
---- blitz-0.8/doc/blitz.info	2004-11-04 23:47:23.000000000 +0100
-+++ blitz-0.8.new/doc/blitz.info	2005-05-30 19:20:48.000000000 +0200
-@@ -1,8 +1,8 @@
- This is blitz.info, produced by makeinfo version 4.1 from blitz.texi.
+--- blitz-1.0.2/doc/blitz.texi.orig	2019-10-02 00:50:17.000000000 +0200
++++ blitz-1.0.2/doc/blitz.texi	2024-04-21 20:19:24.545688472 +0200
+@@ -10,9 +10,9 @@
+ @end iftex
+ @c %**end of header
  
--INFO-DIR-SECTION Blitz++ library
-+INFO-DIR-SECTION Libraries
- START-INFO-DIR-ENTRY
+-@dircategory Blitz++ library
++@dircategory Libraries:
+ @direntry
 -* Blitz++: (blitz++).           High-performance C++ numeric library
-+* Blitz++: (blitz++).			High-performance C++ numeric library
- END-INFO-DIR-ENTRY
++* Blitz++: (blitz).			High-performance C++ numeric library
+ @end direntry
  
- 
  

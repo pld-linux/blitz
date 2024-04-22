@@ -10,14 +10,14 @@ diff -Nurb blitz-0.9.orig/doc/doxygen/Makefile.am blitz-0.9.new/doc/doxygen/Make
  
  DISTCLEANFILES = Doxyfile doxygen-warning 
  
---- blitz-0.9/doc/Makefile.am.orig	2007-11-01 21:28:14.000000000 +0100
-+++ blitz-0.9/doc/Makefile.am	2007-11-01 21:28:50.000000000 +0100
+--- blitz-1.0.2/doc/Makefile.am.orig	2024-04-21 20:16:15.456712855 +0200
++++ blitz-1.0.2/doc/Makefile.am	2024-04-21 20:17:02.503124649 +0200
 @@ -5,7 +5,7 @@
  SUBDIRS = examples stencils doxygen
  
- # install these files
+ # docdir directory to install the doc (pdf ps html) 
 -docdir = $(datadir)/doc/$(PACKAGE)-$(VERSION)
 +docdir = $(datadir)/doc/$(PACKAGE)-doc-$(VERSION)
- doc_DATA = blitz.ps blitz.pdf blitz.html \
- 	blitz_abt.html blitz_fot.html blitz_ovr.html blitz_toc.html \
- 	blitz_1.html blitz_2.html blitz_3.html blitz_4.html blitz_5.html \
+ 
+ DVIPS=export TEXPICTS=$(srcdir); dvips
+ AM_MAKEINFOFLAGS = --no-split -I$(srcdir)

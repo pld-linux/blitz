@@ -1,22 +1,33 @@
+#
+# Conditional build:
+%bcond_without	apidocs	# Doxygen API documentation
+%bcond_with	tbb	# Intel Threading Building Blocks atomic types
+
 Summary:	Blitz++ - a C++ class library for scientific computing
 Summary(pl.UTF-8):	Blitz++ - biblioteka klas C++ do obliczeń naukowych
 Name:		blitz
-Version:	0.9
-Release:	0.1
-License:	GPL or Blitz artistic license
+Version:	1.0.2
+Release:	1
+License:	Artistic v2.0, BSD or LGPL v3
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/blitz/%{name}-%{version}.tar.gz
-# Source0-md5:	031df2816c73e2d3bd6d667bbac19eca
+#Source0Download: https://github.com/blitzpp/blitz/releases
+Source0:	https://github.com/blitzpp/blitz/archive/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	195873ba25ae4c10b9cd374bf42c67c2
 Patch0:		%{name}-DESTDIR.patch
-Patch1:		%{name}-compiler_specific_header.patch
+Patch1:		%{name}-doc.patch
 Patch2:		%{name}-infopage.patch
-URL:		http://www.oonumerics.org/blitz/
+URL:		https://github.com/blitzpp/blitz/wiki/
 BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake
+BuildRequires:	automake >= 1:1.9
+BuildRequires:	blas-devel
+BuildRequires:	boost-devel
 BuildRequires:	doxygen
 BuildRequires:	fonts-TTF-bitstream-vera
+BuildRequires:	gcc-fortran
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.5
+%{?with_tbb:BuildRequires:	tbb-devel}
+BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -36,6 +47,7 @@ Summary:	Header files for Blitz++ library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Blitz++
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	libstdc++-devel
 
 %description devel
 Header files for Blitz++ library.
@@ -80,7 +92,7 @@ Przykłady Blitz++.
 %prep
 %setup -q
 %patch0 -p1
-#%patch1 -p1
+%patch1 -p1
 %patch2 -p1
 
 %build
@@ -89,18 +101,31 @@ Przykłady Blitz++.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
+# here papi is ptools-perfapi library, not the one from papi.spec
 %configure \
-	--enable-shared
-%{__make} lib
+	ac_cv_lib_papi_main=no \
+	%{?with_apidocs:--enable-doxygen --enable-html-docs} \
+	--enable-serialization \
+	--enable-shared \
+	%{?with_tbb:--with-tbb}
+
+%{__make}
+
+%{__make} -j1 info
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_docdir}/%{name}-doc-%{version}/doxygen,%{_examplesdir}/%{name}}
+install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
-%{__make} install \
+%{__make} install install-info \
 	DESTDIR=$RPM_BUILD_ROOT
 
-cp -af examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}
+cp -af examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}-doc-%{version}
+
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libblitz.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -108,36 +133,36 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%post devel
-[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir %{_infodir} >/dev/null 2>&1
-%{__sed} -i -e 's/(blitz++)\./(blitz)./' %{_infodir}/dir
+%post	devel -p /sbin/postshell
+-/usr/sbin/fix-info-dir -c %{_infodir}
 
-%postun devel	-p	/sbin/postshell
+%postun	devel -p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog ChangeLog.1 LEGAL LICENSE NEWS README TODO
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
-%{_pkgconfigdir}/blitz-uninstalled.pc
+%doc AUTHORS COPYRIGHT ChangeLog* LEGAL NEWS README.md
+%attr(755,root,root) %{_libdir}/libblitz.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libblitz.so.0
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libblitz.so
 %{_includedir}/blitz
 %{_includedir}/random
 %{_pkgconfigdir}/blitz.pc
-%{_infodir}/*.info*
+%{_infodir}/blitz.info*
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libblitz.a
 
+%if %{with apidocs}
 %files doc
 %defattr(644,root,root,755)
-%{_docdir}/%{name}-doc-%{version}
+%doc doc/doxygen/html/{search,*.css,*.html,*.js,*.png}
+%endif
 
 %files examples
 %defattr(644,root,root,755)
-%{_examplesdir}/%{name}
+%{_examplesdir}/%{name}-%{version}
