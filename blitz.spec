@@ -107,6 +107,7 @@ Przykłady Blitz++.
 	%{?with_apidocs:--enable-doxygen --enable-html-docs} \
 	--enable-serialization \
 	--enable-shared \
+	--with-boost-libdir=%{_libdir} \
 	%{?with_tbb:--with-tbb}
 
 %{__make}
