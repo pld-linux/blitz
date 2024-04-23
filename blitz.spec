@@ -104,6 +104,7 @@ Przykłady Blitz++.
 # here papi is ptools-perfapi library, not the one from papi.spec
 %configure \
 	ac_cv_lib_papi_main=no \
+	--disable-cxx-flags-preset \
 	%{?with_apidocs:--enable-doxygen --enable-html-docs} \
 	--enable-serialization \
 	--enable-shared \
